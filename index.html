@@ -617,13 +617,13 @@
 
   .why-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 5vw;
     align-items: start;
     margin-top: 3.5rem;
   }
 
-  .why-points { display: flex; flex-direction: column; gap: 1.6rem; }
+  .why-points { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem;
 
   .why-point {
     display: flex;
@@ -650,72 +650,6 @@
 
   .why-text strong { display: block; font-size: 0.95rem; color: var(--cream); margin-bottom: 0.3rem; font-weight: 500; }
   .why-text p { font-size: 0.85rem; color: var(--mid); line-height: 1.6; font-weight: 300; }
-
-  .testimonial-box {
-    background: var(--dark2);
-    border: 1px solid var(--rule);
-    border-top: 3px solid var(--gold);
-    padding: 2.4rem;
-    border-radius: 2px;
-    position: sticky;
-    top: 90px;
-  }
-
-  .testimonial-quote {
-    font-family: var(--serif);
-    font-size: 1.25rem;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--cream);
-    line-height: 1.6;
-    margin-bottom: 1.6rem;
-  }
-
-  .testimonial-quote::before {
-    content: '\201C';
-    font-size: 3rem;
-    color: var(--gold);
-    line-height: 0;
-    vertical-align: -0.5em;
-    margin-right: 0.1em;
-    font-style: normal;
-  }
-
-  .testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding-top: 1.4rem;
-    border-top: 1px solid var(--rule);
-  }
-
-  .testimonial-avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--gold-d), var(--gold));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--dark);
-    flex-shrink: 0;
-  }
-
-  .testimonial-name { font-size: 0.88rem; font-weight: 500; color: var(--cream); }
-  .testimonial-role { font-size: 0.78rem; color: var(--mid); }
-
-  .testimonial-placeholder {
-    text-align: center;
-    padding: 2rem;
-    border: 1px dashed var(--rule);
-    border-radius: 2px;
-    margin-top: 1.4rem;
-  }
-
-  .testimonial-placeholder p { font-size: 0.82rem; color: var(--mid); font-style: italic; line-height: 1.6; }
 
   /* ── CTA section ──────────────────────────────────────────────── */
   #cta {
