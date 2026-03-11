@@ -333,7 +333,8 @@
     font-weight: 700;
     color: var(--gold);
     line-height: 1;
-    min-width: 64px;
+    min-width: 80px;
+    white-space: nowrap;
   }
 
   .stat-label {
@@ -878,7 +879,7 @@
   .reveal-delay-5 { transition-delay: 0.5s; }
 
   @media (max-width: 900px) {
-    .reveal {
+    .reveal, .reveal.visible {
       opacity: 1 !important;
       transform: none !important;
       transition: none !important;
@@ -1260,21 +1261,17 @@
 
   const revealEls = document.querySelectorAll('.reveal');
   const isMobile = window.innerWidth <= 900;
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: isMobile ? 0.01 : 0.12, rootMargin: isMobile ? '0px 0px 0px 0px' : '0px 0px -40px 0px' });
-  revealEls.forEach(el => observer.observe(el));
 
-  // Force reveal all on mobile as fallback
-  if (isMobile) {
-    setTimeout(() => {
-      revealEls.forEach(el => el.classList.add('visible'));
-    }, 300);
+  if (!isMobile) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
   }
 
   const sections = document.querySelectorAll('section[id]');
