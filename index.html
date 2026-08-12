@@ -442,6 +442,35 @@
   /* ── Offers section ───────────────────────────────────────────── */
   #offers { background: var(--dark); }
 
+  .cobrand-line {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.9rem 1.4rem;
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 2px 2px 0;
+    background: var(--dark2);
+    margin-bottom: 3rem;
+    max-width: 720px;
+  }
+
+  .cobrand-line p {
+    font-size: 0.85rem;
+    color: var(--light);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .cobrand-line a {
+    color: var(--teal);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(126,184,164,0.3);
+    white-space: nowrap;
+  }
+
+  .cobrand-line a:hover { border-color: var(--teal); }
+
   .offers-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -457,6 +486,8 @@
     padding: 2.4rem;
     position: relative;
     transition: background 0.3s;
+    display: flex;
+    flex-direction: column;
   }
 
   .offer-card:hover { background: var(--dark3); }
@@ -508,7 +539,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.4rem;
     padding-top: 1.2rem;
     border-top: 1px solid var(--rule);
   }
@@ -530,33 +561,113 @@
     flex-shrink: 0;
   }
 
+  .offer-scope-note {
+    font-size: 0.78rem;
+    color: var(--mid);
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 1.4rem;
+  }
+
   .offer-turnaround {
     font-size: 0.75rem;
     color: var(--mid);
     font-style: italic;
     padding-top: 0.8rem;
     border-top: 1px solid var(--rule);
+    margin-bottom: 1.4rem;
+  }
+
+  .offer-cta {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.4rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.2s;
+  }
+
+  .offer-cta:hover { transform: translateY(-2px); }
+
+  .offer-cta-buy {
+    color: var(--dark);
+  }
+
+  .offer-cta-call {
+    background: transparent;
+    border: 1px solid;
   }
 
   .offer-gold .offer-accent { background: var(--gold); }
   .offer-gold .offer-type { background: rgba(200,169,110,0.1); color: var(--gold); }
   .offer-gold .offer-price { color: var(--gold); }
   .offer-gold .offer-metrics li::before { background: var(--gold); }
+  .offer-gold .offer-cta-buy { background: var(--gold); }
+  .offer-gold .offer-cta-buy:hover { background: var(--gold-l); box-shadow: 0 8px 24px rgba(200,169,110,0.2); }
 
   .offer-teal .offer-accent { background: var(--teal); }
   .offer-teal .offer-type { background: rgba(126,184,164,0.1); color: var(--teal); }
   .offer-teal .offer-price { color: var(--teal); }
   .offer-teal .offer-metrics li::before { background: var(--teal); }
+  .offer-teal .offer-cta-buy { background: var(--teal); }
+  .offer-teal .offer-cta-buy:hover { background: #94c9b7; box-shadow: 0 8px 24px rgba(126,184,164,0.2); }
 
   .offer-blue .offer-accent { background: var(--blue); }
   .offer-blue .offer-type { background: rgba(139,158,199,0.1); color: var(--blue); }
   .offer-blue .offer-price { color: var(--blue); }
   .offer-blue .offer-metrics li::before { background: var(--blue); }
+  .offer-blue .offer-cta-call { color: var(--blue); border-color: var(--blue); }
+  .offer-blue .offer-cta-call:hover { background: rgba(139,158,199,0.1); }
 
   .offer-rose .offer-accent { background: var(--rose); }
   .offer-rose .offer-type { background: rgba(196,126,138,0.1); color: var(--rose); }
   .offer-rose .offer-price { color: var(--rose); }
   .offer-rose .offer-metrics li::before { background: var(--rose); }
+  .offer-rose .offer-cta-call { color: var(--rose); border-color: var(--rose); }
+  .offer-rose .offer-cta-call:hover { background: rgba(196,126,138,0.1); }
+
+  .guarantee-box {
+    margin-top: 3rem;
+    padding: 2rem 2.2rem;
+    background: var(--dark2);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--gold);
+    border-radius: 2px;
+    max-width: 780px;
+  }
+
+  .guarantee-box .eyebrow { display: block; margin-bottom: 0.7rem; }
+
+  .guarantee-box strong {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--cream);
+    display: block;
+    margin-bottom: 0.7rem;
+  }
+
+  .guarantee-box p {
+    font-size: 0.88rem;
+    color: var(--light);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .guarantee-box p + p { margin-top: 0.8rem; }
+
+  .guarantee-box .fine-print {
+    font-size: 0.78rem;
+    color: var(--mid);
+    font-style: italic;
+  }
 
   /* ── Process section ──────────────────────────────────────────── */
   #process { background: var(--dark2); }
@@ -972,11 +1083,12 @@
         We find it.
       </h1>
       <p class="hero-body">
-        Beacon Consults helps product-based businesses uncover trapped cash, eliminate stockout risk, and understand what every dollar of inventory is actually returning.
+        Run the same trapped-cash calculator that powers BeaconIQ — free, no login required — and see in under a minute where your inventory is costing you.
       </p>
       <div class="hero-actions">
-        <a href="https://calendly.com/nick-beaconconsults" target="_blank" class="btn-primary">
-          Book a Free Diagnostic
+        <!-- TODO: point at the shared calculator (beaconiq.app calculator or embedded version) -->
+        <a href="https://beaconiq.app" target="_blank" class="btn-primary">
+          Calculate Your Trapped Cash
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <a href="#offers" class="btn-ghost">View Services</a>
@@ -1052,6 +1164,10 @@
       <p class="section-body">Whether you need a one-time snapshot or continuous monthly intelligence, there's an engagement designed for exactly where you are.</p>
     </div>
 
+    <div class="cobrand-line reveal">
+      <p>BeaconIQ and Beacon Consults run on the same engine — one you use yourself, one we run for you. <!-- TODO: link to beaconiq.app pricing --><a href="https://beaconiq.app" target="_blank">Try BeaconIQ, DIY →</a></p>
+    </div>
+
     <div class="offers-grid">
 
       <div class="offer-card offer-gold reveal reveal-delay-1">
@@ -1066,6 +1182,8 @@
           <li>Healthy Inventory Report — confirm what to protect</li>
         </ul>
         <p class="offer-turnaround">⏱ Delivered in 5 business days</p>
+        <!-- TODO: replace with real Stripe Payment Link -->
+        <a href="#" class="offer-cta offer-cta-buy">Buy Health Snapshot</a>
       </div>
 
       <div class="offer-card offer-teal reveal reveal-delay-2">
@@ -1081,36 +1199,51 @@
           <li>GMROI — gross margin return on every dollar invested</li>
         </ul>
         <p class="offer-turnaround">⏱ Delivered in 7–10 business days</p>
+        <!-- TODO: replace with real Stripe Payment Link -->
+        <a href="#" class="offer-cta offer-cta-buy">Buy Performance Audit</a>
       </div>
 
       <div class="offer-card offer-blue reveal reveal-delay-3">
         <div class="offer-accent"></div>
         <span class="offer-type">Monthly Retainer</span>
         <h3 class="offer-name">Health Monitor</h3>
-        <div class="offer-price">$1,000<span style="font-size:1rem;font-weight:300;color:var(--mid)"> /mo</span></div>
-        <p class="offer-desc">Ongoing visibility into your inventory health so problems are caught before they become crises. Includes a full monthly Health Snapshot plus a weekly Monday pulse update on your most critical SKUs.</p>
+        <div class="offer-price">$2,500<span style="font-size:1rem;font-weight:300;color:var(--mid)"> /mo</span></div>
+        <p class="offer-desc">A monthly Health Snapshot, a weekly Monday pulse, and your BeaconIQ Shopify-tier subscription — included, not billed separately. We watch it every week and tell you what to do; you never have to log in unless you want to.</p>
         <ul class="offer-metrics">
           <li>Monthly Health Snapshot — full classification refreshed every month</li>
           <li>Weekly Pulse Update — every Monday by 9am</li>
+          <li>BeaconIQ Shopify-tier access included — no separate software bill</li>
           <li>Month-over-month trend tracking</li>
         </ul>
-        <p class="offer-turnaround">📅 Min. 3-month engagement recommended</p>
+        <p class="offer-scope-note">We tell you exactly what to reorder and how much — placing the order with your vendor stays with you or your ops team.</p>
+        <p class="offer-turnaround">📅 90-day minimum term — required for the recovery guarantee below. Month-to-month available without the guarantee.</p>
+        <a href="https://calendly.com/nick-beaconconsults" target="_blank" class="offer-cta offer-cta-call">Book a Call to Start</a>
       </div>
 
       <div class="offer-card offer-rose reveal reveal-delay-4">
         <div class="offer-accent"></div>
         <span class="offer-type">Monthly Retainer · Most Popular</span>
         <h3 class="offer-name">Performance Monitor</h3>
-        <div class="offer-price">$2,000<span style="font-size:1rem;font-weight:300;color:var(--mid)"> /mo</span></div>
-        <p class="offer-desc">The complete ongoing intelligence layer. Monthly performance audit plus weekly pulse, so your inventory is always optimised and your buying decisions are always data-led.</p>
+        <div class="offer-price">$5,000<span style="font-size:1rem;font-weight:300;color:var(--mid)"> /mo</span></div>
+        <p class="offer-desc">A monthly Performance Audit, a weekly pulse, and your BeaconIQ Planner-tier subscription — included, not billed separately. The complete ongoing intelligence layer: Turns, DOI, and GMROI reviewed by a person every week, not just refreshed on a dashboard.</p>
         <ul class="offer-metrics">
-          <li>Monthly Performance Audit — Turns, DOI &amp; GMROI refreshed monthly</li>
+          <li>Monthly Performance Audit — Turns, DOI &amp; GMROI reviewed monthly</li>
           <li>Weekly Pulse Update — KPIs, alerts, and action items every Monday</li>
+          <li>BeaconIQ Planner-tier access included — no separate software bill</li>
           <li>Month-over-month KPI comparison</li>
         </ul>
-        <p class="offer-turnaround">📅 Min. 3-month engagement recommended</p>
+        <p class="offer-scope-note">We tell you exactly what to reorder and how much — placing the order with your vendor stays with you or your ops team.</p>
+        <p class="offer-turnaround">📅 90-day minimum term — required for the recovery guarantee below. Month-to-month available without the guarantee.</p>
+        <a href="https://calendly.com/nick-beaconconsults" target="_blank" class="offer-cta offer-cta-call">Book a Call to Start</a>
       </div>
 
+    </div>
+
+    <div class="guarantee-box reveal">
+      <span class="eyebrow">The Recovery Guarantee</span>
+      <strong>$10,000 recovered in 90 days — or we keep working for free.</strong>
+      <p>Enroll in a 90-day Health Monitor or Performance Monitor engagement, and we'll reduce your trapped cash number by at least $10,000 — not identified, actually removed from your dashboard through liquidation and reorder discipline. If we haven't hit it by day 90, we keep managing your inventory at no additional charge until we do.</p>
+      <p class="fine-print">Applies to 90-day Monitor engagements only. Month-to-month plans don't include the guarantee, since recovery — as opposed to findings — takes real time to show up in the number.</p>
     </div>
 
     <div style="margin-top:2rem; text-align:center;" class="reveal">
@@ -1239,11 +1372,12 @@
       <li><a href="#process">Process</a></li>
       <li><a href="#cta">Contact</a></li>
     </ul>
-    <p class="footer-copy">&copy; 2025 Beacon Consults · beaconconsults.co</p>
+    <p class="footer-copy">&copy; 2026 Beacon Consults · beaconconsults.co</p>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
   }
@@ -1263,4 +1397,15 @@
   });
 
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href.length > 1) {
+        e.preventDefault();
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
