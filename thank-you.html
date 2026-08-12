@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>You're In — Beacon Consults</title>
+<meta name="description" content="Your audit is confirmed. Here's what happens next."/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --dark:    #13120F;
+    --dark2:   #1C1A15;
+    --gold:    #C8A96E;
+    --gold-l:  #E8D4A8;
+    --gold-d:  #9A7A40;
+    --teal:    #7EB8A4;
+    --cream:   #F5F0E8;
+    --mid:     #8A8070;
+    --light:   #C8C0B0;
+    --rule:    #2E2B22;
+    --serif:   'Cormorant Garamond', Georgia, serif;
+    --sans:    'DM Sans', system-ui, sans-serif;
+  }
+
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5vw;
+  }
+
+  .wrap { max-width: 640px; width: 100%; }
+
+  .eyebrow {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--cream);
+    margin-bottom: 1.2rem;
+  }
+
+  h1 em { font-style: italic; color: var(--gold); }
+
+  .lede {
+    font-size: 1rem;
+    color: var(--light);
+    font-weight: 300;
+    line-height: 1.75;
+    margin-bottom: 2.4rem;
+    max-width: 520px;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 2.6rem;
+  }
+
+  .step {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    padding: 1.3rem 1.4rem;
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 2px 2px 0;
+    background: var(--dark2);
+  }
+
+  .step-num {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 28px;
+  }
+
+  .step-text strong { display: block; font-size: 0.92rem; color: var(--cream); margin-bottom: 0.3rem; font-weight: 500; }
+  .step-text p { font-size: 0.85rem; color: var(--mid); line-height: 1.6; font-weight: 300; }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.6rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--gold-l); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--light);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    padding: 0.9rem 1.6rem;
+    border-radius: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--gold); border-color: var(--gold-d); }
+
+  .fine-print {
+    font-size: 0.8rem;
+    color: var(--mid);
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .fine-print a { color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(126,184,164,0.3); }
+  .fine-print a:hover { border-color: var(--teal); }
+
+  @media (max-width: 560px) {
+    .actions { flex-direction: column; }
+    .btn-primary, .btn-ghost { justify-content: center; width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <span class="eyebrow">Payment Confirmed</span>
+  <h1>You're in. Let's find<br/>what's <em>hiding</em>.</h1>
+  <p class="lede">Thanks — your audit is confirmed. No login, no store connection required. Here's exactly what happens between now and your findings call.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-text">
+        <strong>Download the data format guide</strong>
+        <p>One page, plain columns — no ERP access needed. It shows exactly what to include and gives you a sample file to match against.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-text">
+        <strong>Send us your export</strong>
+        <p>A simple CSV from Shopify, QuickBooks, NetSuite, or even a spreadsheet works. Email it to us directly — no upload portal, no account to create.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-text">
+        <strong>We run the analysis</strong>
+        <p>We'll be in touch to confirm receipt and schedule your findings call once your report is ready.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <!-- TODO: confirm this is the correct public route for the CSV guide (assumed /csv-guide on beaconiq.app) -->
+    <a href="https://beaconiq.app/csv-guide" target="_blank" class="btn-primary">View Data Format Guide</a>
+    <a href="mailto:nick@beaconconsults.co" class="btn-ghost">Email Your File</a>
+  </div>
+
+  <p class="fine-print">Questions before you send anything over? <a href="https://calendly.com/nick-beaconconsults" target="_blank">Book a quick call</a> — happy to walk through it with you.</p>
+</div>
+
+</body>
+</html>
