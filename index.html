@@ -439,6 +439,143 @@
 
   .pain-body { font-size: 0.88rem; color: var(--mid); line-height: 1.7; font-weight: 300; }
 
+  /* ── Sample findings section ─────────────────────────────────── */
+  #sample { background: var(--dark); border-top: 1px solid var(--rule); }
+
+  .sample-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(200,169,110,0.3);
+    border-radius: 100px;
+    margin-bottom: 1.6rem;
+  }
+
+  .sample-banner span { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+
+  .sample-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    margin-top: 2rem;
+    background: var(--dark2);
+  }
+
+  .sample-table { width: 100%; border-collapse: collapse; min-width: 640px; }
+
+  .sample-table caption {
+    text-align: left;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    padding: 1rem 1.2rem 0.8rem;
+  }
+
+  .sample-table th {
+    text-align: left;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--mid);
+    font-weight: 500;
+    padding: 0.7rem 1.2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sample-table td {
+    font-size: 0.85rem;
+    color: var(--light);
+    padding: 0.7rem 1.2rem;
+    border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+
+  .sample-table tr:last-child td { border-bottom: none; }
+
+  .sample-table td.num { color: var(--cream); font-weight: 500; }
+  .sample-table td.grade-a { color: var(--teal); font-weight: 500; }
+
+  .sample-note {
+    margin-top: 1.4rem;
+    font-size: 0.82rem;
+    color: var(--mid);
+    font-style: italic;
+    max-width: 640px;
+    line-height: 1.7;
+  }
+
+  .sample-pdf-box {
+    margin-top: 3rem;
+    padding: 2rem 2.2rem;
+    background: var(--dark2);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--teal);
+    border-radius: 2px;
+    max-width: 620px;
+  }
+
+  .sample-pdf-box strong {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--cream);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .sample-pdf-box p {
+    font-size: 0.85rem;
+    color: var(--light);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+
+  .sample-pdf-form {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .sample-pdf-form input {
+    flex: 1;
+    min-width: 160px;
+    background: var(--dark);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 0.75rem 1rem;
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 0.85rem;
+  }
+
+  .sample-pdf-form input:focus { outline: none; border-color: var(--gold-d); }
+
+  .sample-pdf-form button {
+    background: var(--teal);
+    color: var(--dark);
+    border: none;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.75rem 1.4rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .sample-pdf-form button:hover { background: #94c9b7; }
+
+  @media (max-width: 580px) {
+    .sample-pdf-form { flex-direction: column; }
+    .sample-pdf-form button { width: 100%; }
+  }
+
   /* ── Offers section ───────────────────────────────────────────── */
   #offers { background: var(--dark); }
 
@@ -625,6 +762,8 @@
   .offer-blue .offer-metrics li::before { background: var(--blue); }
   .offer-blue .offer-cta-call { color: var(--blue); border-color: var(--blue); }
   .offer-blue .offer-cta-call:hover { background: rgba(139,158,199,0.1); }
+  .offer-blue .offer-cta-buy { background: var(--blue); }
+  .offer-blue .offer-cta-buy:hover { background: #A8B8DC; box-shadow: 0 8px 24px rgba(139,158,199,0.2); }
 
   .offer-rose .offer-accent { background: var(--rose); }
   .offer-rose .offer-type { background: rgba(196,126,138,0.1); color: var(--rose); }
@@ -632,6 +771,8 @@
   .offer-rose .offer-metrics li::before { background: var(--rose); }
   .offer-rose .offer-cta-call { color: var(--rose); border-color: var(--rose); }
   .offer-rose .offer-cta-call:hover { background: rgba(196,126,138,0.1); }
+  .offer-rose .offer-cta-buy { background: var(--rose); }
+  .offer-rose .offer-cta-buy:hover { background: #D89AA5; box-shadow: 0 8px 24px rgba(196,126,138,0.2); }
 
   .guarantee-box {
     margin-top: 3rem;
@@ -1050,11 +1191,12 @@
   <a href="#" class="nav-logo">Beacon<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#pain">The Problem</a></li>
+    <li><a href="#sample">Sample Audit</a></li>
     <li><a href="#offers">Services</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#why">Why Beacon</a></li>
     <li><a href="https://portal.beaconconsults.co" target="_blank" style="font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);text-decoration:none;border:1px solid var(--teal);padding:0.5rem 1.2rem;border-radius:2px;transition:all 0.2s;" onmouseover="this.style.background='rgba(126,184,164,0.1)'" onmouseout="this.style.background='transparent'">Client Portal</a></li>
-    <li><a href="https://calendly.com/nick-beaconconsults" target="_blank" class="nav-cta">Book a Call</a></li>
+    <li><a href="javascript:void(0)" onclick="window.location='mai'+'lto:'+'info'+'@'+'beaconconsults.co'" class="nav-cta">Email Us</a></li>
   </ul>
   <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -1063,11 +1205,12 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="#pain" onclick="toggleMenu()">The Problem</a>
+  <a href="#sample" onclick="toggleMenu()">Sample Audit</a>
   <a href="#offers" onclick="toggleMenu()">Services</a>
   <a href="#process" onclick="toggleMenu()">Process</a>
   <a href="#why" onclick="toggleMenu()">Why Beacon</a>
   <a href="https://portal.beaconconsults.co" target="_blank" style="color:var(--teal);">Client Portal</a>
-  <a href="https://calendly.com/nick-beaconconsults" target="_blank" onclick="toggleMenu()">Book a Call →</a>
+  <a href="javascript:void(0)" onclick="window.location='mai'+'lto:'+'info'+'@'+'beaconconsults.co'">Email Us →</a>
 </div>
 
 <!-- ── HERO ─────────────────────────────────────────────────────────── -->
@@ -1083,15 +1226,14 @@
         We find it.
       </h1>
       <p class="hero-body">
-        Run the same trapped-cash calculator that powers BeaconIQ — free, no login required — and see in under a minute where your inventory is costing you.
+        We run a SKU-by-SKU audit of your inventory and hand you a written report showing exactly where cash is trapped and which products are about to stock out — delivered in as little as 5 business days.
       </p>
       <div class="hero-actions">
-        <!-- TODO: point at the shared calculator (beaconiq.app calculator or embedded version) -->
-        <a href="https://beaconiq.app" target="_blank" class="btn-primary">
-          Calculate Your Trapped Cash
+        <a href="#offers" class="btn-primary">
+          View Audit Options
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="#offers" class="btn-ghost">View Services</a>
+        <a href="#sample" class="btn-ghost">See a Sample Audit</a>
       </div>
     </div>
 
@@ -1154,6 +1296,67 @@
   </div>
 </section>
 
+<!-- ── SAMPLE FINDINGS ──────────────────────────────────────────────── -->
+<section id="sample">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="eyebrow">A Real Audit, Anonymized</span>
+      <span class="rule-gold"></span>
+      <h2 class="section-title">What an audit<br/>actually <em>looks like</em></h2>
+      <p class="section-body">This is a real excerpt from a completed Beacon audit, with the client's name and identifying details removed. Your audit will include a full table like this for every SKU in your catalog — this is a small sample of what that looks like.</p>
+    </div>
+
+    <div class="sample-banner">
+      <span>Sample Excerpt — 10 of 381 SKUs Shown</span>
+    </div>
+
+    <div class="sample-table-wrap">
+      <table class="sample-table">
+        <caption>Stockout Risk — SKUs with zero on-hand and active sales</caption>
+        <thead>
+          <tr><th>SKU</th><th>Product</th><th>Grade</th><th>On Hand</th><th>Qty Sold</th><th>Lost Revenue</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>—3008</td><td>Dumbbell Set 12PC Rack</td><td class="grade-a">A</td><td>0</td><td>15</td><td class="num">$20,893</td></tr>
+          <tr><td>—3004</td><td>Cable Pulley Attachment</td><td>B</td><td>0</td><td>9</td><td class="num">$15,104</td></tr>
+          <tr><td>—4001</td><td>Workout Mat Thick 72x48</td><td class="grade-a">A</td><td>0</td><td>8</td><td class="num">$11,035</td></tr>
+          <tr><td>—6001</td><td>Outdoor Pull-Up Station</td><td class="grade-a">A</td><td>2</td><td>26</td><td class="num">$10,656</td></tr>
+          <tr><td>—2005</td><td>Resistance Loop Band 2PK</td><td class="grade-a">A</td><td>4</td><td>29</td><td class="num">$8,810</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sample-table-wrap" style="margin-top:1.5px;">
+      <table class="sample-table">
+        <caption>Capital Recovery — overstock &amp; dead stock, liquidation candidates</caption>
+        <thead>
+          <tr><th>SKU</th><th>Product</th><th>Status</th><th>On Hand</th><th>Unit Cost</th><th>Trapped $</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>—3018</td><td>Lat Pulldown 64LB Stack</td><td>Overstock</td><td>6</td><td>$1,161</td><td class="num">$4,939</td></tr>
+          <tr><td>—2002</td><td>Resistance Band Set 4PC</td><td>Overstock</td><td>2</td><td>$1,891</td><td class="num">$3,280</td></tr>
+          <tr><td>—5008</td><td>Gym Bag Organizer 12PC</td><td>Dead Stock</td><td>2</td><td>$1,585</td><td class="num">$3,171</td></tr>
+          <tr><td>—3005</td><td>Weight Plate Set 15PC</td><td>Dead Stock</td><td>2</td><td>$1,042</td><td class="num">$2,083</td></tr>
+          <tr><td>—1008</td><td>Elliptical Recumbent Bike</td><td>Dead Stock</td><td>1</td><td>$2,042</td><td class="num">$2,042</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="sample-note">On this catalog (381 SKUs), Beacon identified $244,132 in revenue at risk across 76 stockout-risk SKUs and $26,516 in trapped cash across overstock and dead stock — plus a prioritized, SKU-by-SKU action plan for what to reorder, liquidate, and monitor first. Your report will be built the same way, from your own catalog.</p>
+
+    <div class="sample-pdf-box reveal">
+      <strong>Want to see the full sample report?</strong>
+      <p>Get the complete anonymized audit PDF — every SKU, every table, plus the prioritized action plan — sent straight to your inbox.</p>
+      <!-- TODO: wire to existing abandoned-lead cron pattern; on submit, POST {name, email, source: 'sample-audit-pdf'} to the same endpoint the calculator lead-capture uses, then trigger the PDF send -->
+      <form class="sample-pdf-form" onsubmit="event.preventDefault(); alert('Wire this form to the lead-capture endpoint.');">
+        <input type="text" name="name" placeholder="First name" required/>
+        <input type="email" name="email" placeholder="Work email" required/>
+        <button type="submit">Send Me the Sample</button>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- ── OFFERS ────────────────────────────────────────────────────────── -->
 <section id="offers">
   <div class="section-inner">
@@ -1162,10 +1365,6 @@
       <span class="rule-gold"></span>
       <h2 class="section-title">Four ways to work<br/>with <em>Beacon</em></h2>
       <p class="section-body">Whether you need a one-time snapshot or continuous monthly intelligence, there's an engagement designed for exactly where you are.</p>
-    </div>
-
-    <div class="cobrand-line reveal">
-      <p>BeaconIQ and Beacon Consults run on the same engine — one you use yourself, one we run for you. <!-- TODO: link to beaconiq.app pricing --><a href="https://beaconiq.app" target="_blank">Try BeaconIQ, DIY →</a></p>
     </div>
 
     <div class="offers-grid">
@@ -1181,8 +1380,10 @@
           <li>Stockout Risk Mapping — flag SKUs about to run dry</li>
           <li>Healthy Inventory Report — confirm what to protect</li>
         </ul>
+        <p class="offer-scope-note">Guarantee: we identify at least $3,000 in trapped cash and at-risk revenue combined, or the audit is free. (Identified, not recovered — see the Monitor guarantee below for that.)</p>
         <p class="offer-turnaround">⏱ Delivered in 5 business days</p>
         <a href="https://buy.stripe.com/28EbJ26zw0uK8UnbCZdwc01" target="_blank" class="offer-cta offer-cta-buy">Buy Health Snapshot</a>
+        <p style="margin-top:1rem;font-size:0.8rem;color:var(--mid);font-style:italic;text-align:center;">Not ready to pay for an audit? <!-- TODO: link to beaconiq.app pricing --><a href="https://beaconiq.app" target="_blank" style="color:var(--teal);border-bottom:1px solid rgba(126,184,164,0.3);text-decoration:none;font-style:normal;">Run BeaconIQ yourself, free →</a></p>
       </div>
 
       <div class="offer-card offer-teal reveal reveal-delay-2">
@@ -1197,6 +1398,7 @@
           <li>Days of Inventory (DOI) — how long each SKU sits before it sells</li>
           <li>GMROI — gross margin return on every dollar invested</li>
         </ul>
+        <p class="offer-scope-note">Guarantee: we identify at least $6,000 in trapped cash and at-risk revenue combined, or the audit is free. (Identified, not recovered — see the Monitor guarantee below for that.)</p>
         <p class="offer-turnaround">⏱ Delivered in 7–10 business days</p>
         <a href="https://buy.stripe.com/9B64gA8HEfpEgmPePbdwc00" target="_blank" class="offer-cta offer-cta-buy">Buy Performance Audit</a>
       </div>
@@ -1215,7 +1417,8 @@
         </ul>
         <p class="offer-scope-note">We tell you exactly what to reorder and how much — placing the order with your vendor stays with you or your ops team.</p>
         <p class="offer-turnaround">📅 90-day minimum term — required for the recovery guarantee below. Month-to-month available without the guarantee.</p>
-        <a href="https://calendly.com/nick-beaconconsults" target="_blank" class="offer-cta offer-cta-call">Book a Call to Start</a>
+        <!-- TODO: needs a Stripe recurring price for $2,500/mo — drop the real Checkout link in here once created -->
+        <a href="#" onclick="alert('Wire to the $2,500/mo Stripe subscription price once created.'); return false;" class="offer-cta offer-cta-buy">Start Health Monitor</a>
       </div>
 
       <div class="offer-card offer-rose reveal reveal-delay-4">
@@ -1232,7 +1435,8 @@
         </ul>
         <p class="offer-scope-note">We tell you exactly what to reorder and how much — placing the order with your vendor stays with you or your ops team.</p>
         <p class="offer-turnaround">📅 90-day minimum term — required for the recovery guarantee below. Month-to-month available without the guarantee.</p>
-        <a href="https://calendly.com/nick-beaconconsults" target="_blank" class="offer-cta offer-cta-call">Book a Call to Start</a>
+        <!-- TODO: needs a Stripe recurring price for $5,000/mo — drop the real Checkout link in here once created -->
+        <a href="#" onclick="alert('Wire to the $5,000/mo Stripe subscription price once created.'); return false;" class="offer-cta offer-cta-buy">Start Performance Monitor</a>
       </div>
 
     </div>
@@ -1245,8 +1449,8 @@
     </div>
 
     <div style="margin-top:2rem; text-align:center;" class="reveal">
-      <p style="font-size:0.85rem;color:var(--mid);margin-bottom:1.2rem;font-style:italic;">Not sure which is right for you? The diagnostic call will make it clear.</p>
-      <a href="https://calendly.com/nick-beaconconsults" target="_blank" class="btn-primary">Book a Free 20-Min Diagnostic</a>
+      <p style="font-size:0.85rem;color:var(--mid);margin-bottom:1.2rem;font-style:italic;">Not sure which is right for you? Tell us a bit about your catalog and we'll point you at the right one.</p>
+      <a href="javascript:void(0)" onclick="window.location='mai'+'lto:'+'info'+'@'+'beaconconsults.co'" class="btn-primary">Email Us to Get Started</a>
     </div>
   </div>
 </section>
@@ -1257,14 +1461,14 @@
     <div class="section-header reveal">
       <span class="eyebrow">How It Works</span>
       <span class="rule-gold"></span>
-      <h2 class="section-title">From first call to<br/><em>clear findings</em> in 5 steps</h2>
+      <h2 class="section-title">From first email to<br/><em>clear findings</em> in 5 steps</h2>
     </div>
 
     <div class="process-steps">
       <div class="process-step reveal reveal-delay-1">
         <div class="step-num">01</div>
-        <p class="step-title">Diagnostic Call</p>
-        <p class="step-body">Free 20-minute call to understand your business, inventory pain points, and which offer is the right fit.</p>
+        <p class="step-title">Tell Us What You Need</p>
+        <p class="step-body">Email us about your business and inventory pain points — we'll reply with which offer is the right fit.</p>
       </div>
       <div class="process-step reveal reveal-delay-2">
         <div class="step-num">02</div>
@@ -1278,8 +1482,8 @@
       </div>
       <div class="process-step reveal reveal-delay-4">
         <div class="step-num">04</div>
-        <p class="step-title">Findings Call</p>
-        <p class="step-body">We walk you through every finding — trapped cash, stockout risks, and specific recommended actions.</p>
+        <p class="step-title">Video Walkthrough</p>
+        <p class="step-body">You get a recorded walkthrough of every finding — trapped cash, stockout risks, and specific recommended actions — watch it whenever works for you.</p>
       </div>
       <div class="process-step reveal reveal-delay-5">
         <div class="step-num">05</div>
@@ -1340,19 +1544,20 @@
     <div class="cta-inner reveal">
       <span class="eyebrow" style="display:block;margin-bottom:1rem;">Get Started</span>
       <h2 class="cta-title">Find out what your<br/>inventory is <em>hiding</em></h2>
-      <p class="cta-body">Book a free 20-minute inventory diagnostic call. No obligation — just a focused conversation about where your inventory might be costing you money, and whether an audit makes sense.</p>
+      <p class="cta-body">Email us about your business. No obligation — just a straight answer on where your inventory might be costing you money, and whether an audit makes sense.</p>
 
-      <a href="https://calendly.com/nick-beaconconsults" target="_blank" class="cta-calendly-btn">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="2" width="14" height="13" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1 6h14M5 1v2M11 1v2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-        Book Your Free Diagnostic Call
+      <a href="javascript:void(0)" onclick="window.location='mai'+'lto:'+'info'+'@'+'beaconconsults.co'" class="cta-calendly-btn">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.2"/></svg>
+        Email Us to Get Started
       </a>
-      <p class="cta-note">No spam. No pitch deck. Just a 20-minute conversation.</p>
+      <p class="cta-note">No spam. No pitch deck. Just a straight reply.</p>
 
-      <div class="cta-divider"><span>or reach out directly</span></div>
-      <a href="javascript:void(0)" onclick="window.location='mai'+'lto:'+'info'+'@'+'beaconconsults.co'" class="cta-email-link">
+      <a href="javascript:void(0)" onclick="window.location='mai'+'lto:'+'info'+'@'+'beaconconsults.co'" class="cta-email-link" style="margin-top:1.4rem;">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.2"/></svg>
         info@beaconconsults.co
       </a>
+
+      <p style="margin-top:2.4rem;font-size:0.78rem;color:var(--mid);font-style:italic;">Need something more specific that doesn't fit neatly into the above? Tell us what you need — we'll let you know if it's something we can help with.</p>
     </div>
   </div>
 </section>
