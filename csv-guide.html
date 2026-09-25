@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Data Format Guide — Beacon Consults</title>
+<meta name="description" content="Every column Beacon reads from your inventory export, and every output it produces. No ERP access required — a simple CSV is enough."/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --dark:    #13120F;
+    --dark2:   #1C1A15;
+    --dark3:   #252218;
+    --gold:    #C8A96E;
+    --gold-l:  #E8D4A8;
+    --gold-d:  #9A7A40;
+    --teal:    #7EB8A4;
+    --cream:   #F5F0E8;
+    --mid:     #8A8070;
+    --light:   #C8C0B0;
+    --rule:    #2E2B22;
+    --serif:   'Cormorant Garamond', Georgia, serif;
+    --sans:    'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  a { color: inherit; }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-d); border-radius: 2px; }
+
+  header {
+    padding: 1.6rem 5vw;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--cream);
+    text-decoration: none;
+  }
+
+  .logo span { color: var(--gold); }
+
+  header a.back {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--light);
+    text-decoration: none;
+  }
+
+  header a.back:hover { color: var(--gold); }
+
+  main { max-width: 880px; margin: 0 auto; padding: 5vw; }
+
+  .eyebrow {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--cream);
+    margin-bottom: 1.2rem;
+  }
+
+  .lede {
+    font-size: 1rem;
+    color: var(--light);
+    font-weight: 300;
+    line-height: 1.75;
+    max-width: 640px;
+    margin-bottom: 2.4rem;
+  }
+
+  .note-box {
+    padding: 1.4rem 1.6rem;
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 2px 2px 0;
+    background: var(--dark2);
+    margin-bottom: 3rem;
+  }
+
+  .note-box strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+  }
+
+  .note-box p { font-size: 0.85rem; color: var(--mid); line-height: 1.6; font-weight: 300; }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin: 3rem 0 0.6rem;
+  }
+
+  .section-body {
+    font-size: 0.9rem;
+    color: var(--mid);
+    max-width: 620px;
+    margin-bottom: 1.6rem;
+    font-weight: 300;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    background: var(--dark2);
+    margin-bottom: 1rem;
+  }
+
+  table { width: 100%; border-collapse: collapse; min-width: 640px; }
+
+  th {
+    text-align: left;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--mid);
+    font-weight: 500;
+    padding: 0.7rem 1.1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  td {
+    font-size: 0.83rem;
+    color: var(--light);
+    padding: 0.7rem 1.1rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  td.field { color: var(--cream); font-weight: 500; white-space: nowrap; }
+  td.required-yes { color: var(--gold); font-weight: 500; }
+  td.required-no { color: var(--mid); }
+  td.example { font-family: 'DM Mono', monospace; color: var(--teal); white-space: nowrap; }
+
+  .cta-box {
+    margin-top: 3.5rem;
+    padding: 2rem 2.2rem;
+    background: var(--dark2);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--gold);
+    border-radius: 2px;
+  }
+
+  .cta-box strong {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--cream);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-box p {
+    font-size: 0.88rem;
+    color: var(--light);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 1.4rem;
+  }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.85rem 1.5rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--gold-l); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--light);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    padding: 0.85rem 1.5rem;
+    border-radius: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--gold); border-color: var(--gold-d); }
+
+  footer {
+    padding: 2.4rem 5vw;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+  }
+
+  footer p { font-size: 0.78rem; color: var(--mid); }
+
+  @media (max-width: 560px) {
+    .actions { flex-direction: column; }
+    .btn-primary, .btn-ghost { justify-content: center; width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo">Beacon<span>.</span></a>
+  <a href="/" class="back">← Back to Beacon Consults</a>
+</header>
+
+<main>
+  <span class="eyebrow">Data Format Guide</span>
+  <h1>Every column, in and out</h1>
+  <p class="lede">Beacon accepts a standard CSV export from your ERP, POS, or inventory system — no ERP access or integration required. This guide covers every column we read from your file, what each output means, and how to get the most accurate analysis from your data.</p>
+
+  <div class="note-box">
+    <strong>Column mapping is automatic</strong>
+    <p>We auto-detect your column names on upload. If your columns have custom names, we'll match each field manually with you — you don't need to rename anything before sending your file over.</p>
+  </div>
+
+  <h2>Input columns</h2>
+  <p class="section-body">Columns we read from your CSV. Fields marked Required must be present for analysis to run — everything else improves accuracy but isn't mandatory.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Field</th><th>Required</th><th>Description</th><th>Example</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="field">SKU / Item</td><td class="required-yes">Yes</td><td>Your unique product identifier. Used to track each SKU across analyses.</td><td class="example">WB-1042</td></tr>
+        <tr><td class="field">Description</td><td class="required-yes">Yes</td><td>Product name or description. Used for display and search in your report.</td><td class="example">Merino Crew - Navy</td></tr>
+        <tr><td class="field">Qty Sold (12mo)</td><td class="required-yes">Yes</td><td>Total units sold over the last 12 months. The primary demand signal for scoring and forward demand calculation.</td><td class="example">240</td></tr>
+        <tr><td class="field">On Hand Qty</td><td class="required-yes">Yes</td><td>Current inventory on hand. Used to calculate Days of Inventory and determine stockout or overstock status.</td><td class="example">18</td></tr>
+        <tr><td class="field">Sell Price</td><td class="required-yes">Yes</td><td>Average or current selling price per unit. Used to calculate lost revenue on stockout-risk SKUs.</td><td class="example">89.00</td></tr>
+        <tr><td class="field">Total Cost</td><td class="required-yes">Yes</td><td>Total cost of goods sold over the period, or total inventory cost. Used to derive unit cost when unit cost isn't provided.</td><td class="example">4320.00</td></tr>
+        <tr><td class="field">GP Dollars</td><td class="required-yes">Yes</td><td>Gross profit dollars over the 12-month period. One of four scoring dimensions.</td><td class="example">5760.00</td></tr>
+        <tr><td class="field">GP Percent</td><td class="required-yes">Yes</td><td>Gross margin percentage. Rewards high-margin products even at lower volume.</td><td class="example">57.1</td></tr>
+        <tr><td class="field">Sales Dollars</td><td class="required-no">No</td><td>Total sales revenue over the period. If omitted, calculated as Qty Sold × Sell Price. Providing it directly improves accuracy.</td><td class="example">21360.00</td></tr>
+        <tr><td class="field">Unit Cost</td><td class="required-no">No</td><td>Cost per unit. If provided, used directly for inventory valuation. Otherwise derived from Total Cost ÷ Qty Sold.</td><td class="example">18.00</td></tr>
+        <tr><td class="field">Prior Year Qty</td><td class="required-no">No</td><td>Units sold in the same 12-month period one year ago. Used alongside 90-day figures for a year-over-year seasonal comparison.</td><td class="example">198</td></tr>
+        <tr><td class="field">Qty Sold (Last 90 Days)</td><td class="required-no">No</td><td>Units sold in the last 90 days. Lets us catch a SKU trending up or slowing down before it shows in the 12-month average. Recommended if available.</td><td class="example">62</td></tr>
+        <tr><td class="field">Vendor</td><td class="required-no">No</td><td>Vendor or manufacturer name. Used for filtering and for grouping suggested orders by vendor.</td><td class="example">Merino Co.</td></tr>
+        <tr><td class="field">Description 2</td><td class="required-no">No</td><td>Secondary description field — useful for variant details like color or size.</td><td class="example">Navy / Large</td></tr>
+        <tr><td class="field">Mfg Part No</td><td class="required-no">No</td><td>Manufacturer part number. Optional reference field.</td><td class="example">MC-NVY-L</td></tr>
+        <tr><td class="field">Manufacturer</td><td class="required-no">No</td><td>Brand or manufacturer name. Alternate to Vendor — either column name is detected.</td><td class="example">Merino Co.</td></tr>
+        <tr><td class="field">Product Type / Category</td><td class="required-no">No</td><td>Product category or type. Used for grouping and filtering. If omitted, SKUs are left uncategorized.</td><td class="example">Sweaters</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Output columns</h2>
+  <p class="section-body">What we calculate and report for each SKU after analysis.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Field</th><th>Description</th><th>Example</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="field">Grade</td><td>A letter grade (A, B, C, or D) reflecting the overall performance of a SKU relative to your catalog. Higher-grade SKUs contribute more to revenue, margin, and profitability.</td><td class="example">A</td></tr>
+        <tr><td class="field">Status</td><td>Inventory health classification: Healthy, Stockout Risk, Overstock, Dead Stock, or Inactive. Drives the recommended action for each item.</td><td class="example">Stockout Risk</td></tr>
+        <tr><td class="field">Score</td><td>A composite performance score from 0.00 to 1.00 used to assign the grade. Higher scores indicate stronger overall contribution.</td><td class="example">0.87</td></tr>
+        <tr><td class="field">Days of Inventory (DOI)</td><td>How many days of stock remain at the projected demand rate. Low DOI signals replenishment urgency; high DOI signals excess.</td><td class="example">27</td></tr>
+        <tr><td class="field">Forward Demand</td><td>Projected average daily demand used for replenishment and liquidation calculations. Blends your trailing 12-month average with recent trend or year-over-year seasonality.</td><td class="example">0.66</td></tr>
+        <tr><td class="field">Trailing Demand</td><td>Historical average daily demand based on the last 12 months.</td><td class="example">0.66</td></tr>
+        <tr><td class="field">Lost Revenue</td><td>Estimated revenue at risk if a stockout-risk SKU runs out before replenishment arrives. Shown only on Stockout Risk items.</td><td class="example">$12,400</td></tr>
+        <tr><td class="field">Trapped Cash</td><td>Capital locked in excess inventory beyond your target days on hand. Shown only on Overstock items — cash that could be freed through liquidation.</td><td class="example">$5,626</td></tr>
+        <tr><td class="field">Suggested Order Qty</td><td>Recommended replenishment quantity based on target days, lead time, and safety stock. Not shown for Overstock, Dead Stock, or Inactive SKUs.</td><td class="example">240</td></tr>
+        <tr><td class="field">Suggested Liquidate Qty</td><td>Recommended liquidation quantity, based on excess inventory relative to target and adjusted by grade.</td><td class="example">3</td></tr>
+        <tr><td class="field">Inventory Value</td><td>Current on-hand inventory value based on unit cost. Used in portfolio-level health calculations.</td><td class="example">$18,000</td></tr>
+        <tr><td class="field">GMROI</td><td>Gross Margin Return on Inventory Investment. Measures how efficiently your inventory generates gross profit. Higher is better.</td><td class="example">2.4</td></tr>
+        <tr><td class="field">Turns</td><td>How many times inventory turned over in the 12-month period. A higher number indicates faster-moving stock.</td><td class="example">4.2</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cta-box">
+    <strong>Need help formatting your export?</strong>
+    <p>Download the sample CSV to see the expected format, or email us your export as-is — we'll map it to the right columns on our end.</p>
+    <div class="actions">
+      <!-- Reuses the shared sample file, since Beacon Consults and BeaconIQ run on the same underlying engine -->
+      <a href="https://beaconiq.app/sample-v2.csv" target="_blank" class="btn-primary">Download Sample CSV</a>
+      <a href="mailto:info@beaconconsults.co" class="btn-ghost">Email Us Your File</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2026 Beacon Consults · beaconconsults.co</p>
+</footer>
+
+</body>
+</html>
